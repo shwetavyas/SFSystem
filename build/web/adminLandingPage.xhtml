@@ -1,0 +1,520 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jp="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head >
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Admin Home Page</title>
+
+        <link rel="shortcut icon" href="http://iguides.illinoisstate.edu/favIcon/favicon.ico" type="image/x-icon"/>
+        <!-- Bootstrap 
+        <link href="css/bootstrap.min.css" rel="stylesheet">-->
+        <link href="./resources/css/custom.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"  />
+        <!-- Latest compiled and minified JavaScript -->
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" type="text/css" href="https://my.illinoisstate.edu/responsive.css?v=2"/>
+        <script>
+            $(document).ready(function () {
+                // Set active tab on page load
+                $("#tabs").tabs({active: document.tabTest.currentTab.value});
+
+                // Capture current tab index.  Remember tab index starts at 0 for tab 1.
+                $('#tabs a').click(function (e) {
+                    var curTab = $('.ui-tabs-active');
+                    curTabIndex = curTab.index();
+                    document.tabTest.currentTab.value = curTabIndex;
+                });
+            });
+            function showRoomDiv() {
+                document.getElementById('roomDiv').style.display = "block";
+                hideProfessorDiv();
+                hideAddProfessorDiv();
+            }
+            function hideRoomDiv() {
+                document.getElementById('roomDiv').style.display = "none";
+                document.getElementById('addFormDiv').style.display = "none";
+            }
+            function showAddForm() {
+                document.getElementById('addFormDiv').style.display = "block";
+            }
+            function hideAddRoomDiv() {
+                document.getElementById('addFormDiv').style.display = "none";
+            }
+            
+            function showProfessorDiv() {
+                document.getElementById('professorDiv').style.display = "block";
+                hideRoomDiv();
+                hideAddRoomDiv();
+                //return false;
+            }
+            function hideProfessorDiv() {
+                document.getElementById('professorDiv').style.display = "none";
+                document.getElementById('addProfessorFormDiv').style.display = "none";
+            }
+            function showAddProfessorForm() {
+                document.getElementById('addProfessorFormDiv').style.display = "block";
+            }
+            function hideAddProfessorDiv() {
+                document.getElementById('addProfessorFormDiv').style.display = "none";
+            }
+            function showCourseDiv() {
+                document.getElementById('courseDiv').style.display = "block";
+                hideRoomDiv();
+                hideAddRoomDiv();
+                hideProfessorDiv();
+                hideAddProfessorDiv();
+                
+                //return false;
+            }
+            function hideCourseDiv() {
+                document.getElementById('courseDiv').style.display = "none";
+                document.getElementById('addCourseFormDiv').style.display = "none";
+            }
+            function showAddCourseForm() {
+                document.getElementById('addCourseFormDiv').style.display = "block";
+            }
+            function hideAddCourseDiv() {
+                document.getElementById('addCourseFormDiv').style.display = "none";
+            }
+        </script>
+
+    </h:head>
+    <h:body style="padding-top: 0px"  id="grad1">
+
+        <div class="container">
+            <nav style="height: 30px;">
+                <script src="//iguides.illinoisstate.edu"> </script>
+                <div id="iguide-filler"></div>
+                <div id="iguide-float"> 
+                    <div class="iguide-link-container">
+                        <a class="iguide-isu" href="http://illinoisstate.edu/?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">IllinoisState.edu</a>
+                        <span class="iguide-link-divider"></span>
+                        <a class="iguide-link" id="iguide-link-admissions" href="http://admissions.illinoisstate.edu/?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">Admissions</a>
+                        <span class="iguide-link-divider"></span>
+                        <a class="iguide-link" id="iguide-link-map" href="http://maps.illinoisstate.edu/?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">Maps</a>
+                        <span class="iguide-link-divider"></span>
+                        <a class="iguide-link" id="iguide-link-events" href="http://events.illinoisstate.edu/?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">Events</a>
+                        <span class="iguide-link-divider"></span>
+                        <a class="iguide-link" id="iguide-link-employment" href="http://hr.illinoisstate.edu/prospective/jobs.php?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">Employment</a>
+                        <span class="iguide-link-divider"></span>
+                        <a class="iguide-link" id="iguide-link-search" href="http://search.illinoisstate.edu/?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">Search/A-Z</a>
+                    </div>
+                    <span class="iguide-link-divider"></span>
+                    <a id="iguide-my-link" title="My Illinois State" href="http://my.illinoisstate.edu?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">
+                        <img src="http://iguides.illinoisstate.edu/images/my-red-dark.png" alt="My"/></a>
+                    <a id="iguide-mobile-menu" style="display: none;" title="Illinois State Menu" href="#?utm_source=my.illinoisstate.edu&amp;utm_medium=iguide&amp;utm_campaign=iguide+usage">
+                        <img src="//iguides.illinoisstate.edu/cdn/icons/black/24/list1.png" alt="Menu"/></a>
+                </div>
+            </nav>
+
+            <header>
+                <section id="mastleft" style="padding-top: 20px; padding-bottom: 20px;" >
+                    <div id="mastlogo">
+                        <a class="linkhome" href="https://it.illinoisstate.edu/" />
+                        <img src="http://it.illinoisstate.edu/files/structure/logo/wordmark.png" alt="School of IT" />
+                    </div>
+
+                </section>
+            </header>
+
+
+            <div class="panel">
+
+                <!--top part of the panel- redbird logo, nav bar, etc.-->
+                <div class="panel-heading" style=" padding-top: 0px;    padding-bottom: 0px;    padding-right: 0px;    padding-left: 0px;">
+                    <div  style="padding-bottom: 2px" class="navbar navbar-inverse ">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img src="http://iguides.illinoisstate.edu/favIcon/favicon.ico" class="img-responsive" alt="" /> </a>
+                        </div>
+                        <input type="hidden" name="currentTab" value="0"/>
+                        <div id="tabs" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="#tab1" data-toggle="tab"><i class="glyphicon glyphicon-play"></i> Start</a>
+                                </li>
+                                <li>
+                                    <a href="#tab2" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Pre-Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#tab3" data-toggle="tab"><i class="glyphicon glyphicon-calendar"></i> Prepare Schedule</a>
+                                </li>
+                                <li>
+                                    <a href="#tab4" data-toggle="tab"><i class="glyphicon glyphicon-alert"></i> Resolve Conflicts</a>
+                                </li>
+                                <li>
+                                    <a href="#tab5" data-toggle="tab"><i class="glyphicon glyphicon-send"></i> Preview &amp; Send for Review</a>
+                                </li>
+
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Account
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Change Password</a>
+                                        </li>
+                                        <li>
+                                            <a href="login.xhtml" >Sign Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--panel body-->
+                <div class="panel-body" style="overflow-y: scroll">
+                    <div class="tab-content">
+                        <!--tab1-->
+                        <div class="tab-pane active" style="height: 600px;" id="tab1"><br/>
+                            <h2>Welcome, Admin!</h2>
+                            <br/><br/><br/>
+                            <h:form>
+
+                                <div class="row">
+                                    <div class="col-sm-6 col col-md-6">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h3>Create New Schedule</h3>
+                                                <p>Creates a new schedule from scratch...</p>
+                                                <p><h:selectOneMenu style="width: 125px;height: 24px" value="#{allScheduleController.term}">
+                                                        <f:selectItem itemLabel="Select the term" itemValue=""/>
+                                                        <f:selectItem itemLabel="Spring" itemValue="Spring"/>
+                                                        <f:selectItem itemLabel="Summer" itemValue="Summer"/>
+                                                        <f:selectItem itemLabel="Fall" itemValue="Fall"/>
+                                                    </h:selectOneMenu>&nbsp;&nbsp;&nbsp;
+                                                    <h:inputText jp:placeholder="Year" id="yearID" style="width: 125px;height: 24px" value="#{allScheduleController.year}" />
+                                                    <div>
+                                                        <font color="red">
+                                                            <em>
+                                                                <h:outputText id="formResultStr" value="#{allScheduleController.updateStatus}" /><br/><br/>
+                                                            </em>
+                                                        </font>
+                                                    </div>
+                                                    <div align="right"><h:commandButton class="btn btn-danger" value="Start" role="button" action="#{allScheduleController.addNewAllScheduleId()}"></h:commandButton></div></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col col-md-6">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h3>Modify Existing Schedule</h3>
+                                                <p>Creates a new schedule from a previously prepared schedule...</p><br/>
+                                                <p><h:selectOneMenu style="width: 150px;height: 31px" >
+                                                        <f:selectItem itemLabel="Select a Schedule" itemValue=""/>
+                                                        <f:selectItem itemLabel="Fall 2015" itemValue="Fa15"/>
+                                                        <f:selectItem itemLabel="Summer 2015" itemValue="Su15"/>
+                                                    </h:selectOneMenu>
+
+                                                    <div align="right"><a href="#" class="btn btn-danger" role="button">Start</a></div></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </h:form>
+                        </div>
+                        <!--tab2-->
+                        <div class="tab-pane" style="height: 600px;" id="tab2">
+                            <h:form>
+
+                                <div class="row">
+                                    <div class="col-sm-3 col col-md-offset-1 col-sm-3">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h3>List of Professors</h3>
+                                                <p>Update the List of Professors...</p>
+                                                <div align="right"><input type="button" class="btn btn-danger" value="View Professors" onclick="showProfessorDiv()" /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col col-sm-3">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h3>List of Courses</h3>
+                                                <p>Update the List of Courses...</p>
+                                                <div align="right"><input type="button" class="btn btn-danger" value="View Courses" onclick="showCourseDiv();"></input></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col col-sm-3">
+                                        <div class="thumbnail">
+
+                                            <div class="caption">
+                                                <h3>List of Rooms</h3>
+                                                <p>Update the List of Rooms...</p>
+                                                <div align="right"><input type="button" class="btn btn-danger" value="View Rooms" onclick="showRoomDiv()" /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </h:form>
+                            <!-- Add a Room logic-->
+                            <div id="roomDiv" style="display: none">
+                                <br/><center><h3><strong>Add/Update Rooms</strong></h3></center><br/>
+                                <h:form>
+                                    <div class="list-group" style="text-align: left">
+                                        <ui:repeat value="#{roomController.roomList}" var="room">
+                                            <li class="list-group-item">
+
+                                                <h4 class="list-group-item-heading">
+                                                    <h:outputText value="#{room.roomName}"/>
+
+                                                </h4>
+
+                                                <p class="list-group-item-text">
+
+                                                    Room Type: 
+
+                                                    <h:selectOneMenu rendered="#{roomController.editable}" style="width: 195px" value="#{room.is_lab}">
+                                                        <f:selectItem itemLabel="Lab" itemValue="Lab"/>
+                                                        <f:selectItem itemLabel="Lecture Room" itemValue="Lecture"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputText value="#{room.is_lab}" rendered="#{not roomController.editable}" />
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                    Availability Status: 
+                                                    <h:selectOneMenu rendered="#{roomController.editable}" style="width: 195px" value="#{room.is_available}">
+                                                        <f:selectItem itemLabel="Available" itemValue="Available"/>
+                                                        <f:selectItem itemLabel="Not Available" itemValue="NotAvailable"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputText value="#{room.is_available}" rendered="#{not roomController.editable}" />
+                                                </p>
+                                            </li>
+                                        </ui:repeat>
+                                    </div>
+                                    <center>
+                                        <div>
+                                            <font color="red">
+                                                <em>
+                                                    <h:outputText id="formResultStr" value="#{roomController.updateStatus}" /><br/><br/>
+                                                </em>
+                                            </font>
+                                        </div>
+                                        <h:commandButton class="btn btn-danger" value="Save Changes" action="#{roomController.saveAction}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:commandButton class="btn btn-danger" value="Edit Rooms" action="#{roomController.editAction}" rendered="#{not roomController.editable}" />
+                                        <h:commandButton class="btn btn-danger" value="Cancel Edit" action="#{roomController.stopEditAction}" rendered="#{roomController.editable}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Add Room" onclick="showAddForm()" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Close Form" onclick="hideRoomDiv()" />
+                                    </center>
+                                    <div id="addFormDiv" style="display: none">        
+                                        <h:form id="addRoomForm">
+                                            Room Name: <h:inputText id="roomNameID" value="#{roomController.theRoomModel.roomName}" jp:autofocus="true"/><br/><br/>
+
+                                            Room Type: &nbsp;&nbsp;
+                                            <h:selectOneMenu style="width: 195px" value="#{roomController.theRoomModel.is_lab}">
+                                                <f:selectItem itemLabel="Lab" itemValue="Lab"/>
+                                                <f:selectItem itemLabel="Lecture Room" itemValue="Lecture"/>
+                                            </h:selectOneMenu><br/><br/>
+
+                                            Availability: &nbsp;&nbsp;&nbsp;&nbsp;                                
+                                            <h:selectOneMenu style="width: 195px" value="#{roomController.theRoomModel.is_available}">
+                                                <f:selectItem itemLabel="Available" itemValue="Available"/>
+                                                <f:selectItem itemLabel="Not Available" itemValue="NotAvailable"/>
+                                            </h:selectOneMenu><br/><br/>
+                                            <h:commandButton class="btn btn-danger" value="Add Room" action="#{roomController.addNewRoom}" rendered="#{not roomController.editable}" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="button" class="btn btn-danger" value="Cancel" onclick="hideAddRoomDiv()" />
+                                        </h:form>
+                                    </div>
+
+                                </h:form>
+                            </div>
+                            
+                            <!--merge code for professors here-->
+                            
+                              <!-- Add a Professor logic-->
+                            <div id="professorDiv" style="display: none">
+                                <br/><center><h3><strong>Add/Update Professor</strong></h3></center><br/>
+                                <h:form>
+                                    <div class="list-group" style="text-align: left">
+                                        <ui:repeat value="#{professorController.professorList}" var="professor">
+                                            <li class="list-group-item">
+
+                                                <h4 class="list-group-item-heading">
+                                                    <h:outputText value="#{professor.professorName}"/>
+
+                                                </h4>
+
+                                                <p class="list-group-item-text">
+
+                                                    Professor Employment Status: 
+
+                                                    <h:selectOneMenu rendered="#{professorController.editable}" style="width: 195px" value="#{professor.employmentStatus}">
+                                                        <f:selectItem itemLabel="Active" itemValue="Active"/>
+                                                        <f:selectItem itemLabel="InActive" itemValue="InActive"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputText value="#{professor.employmentStatus}" rendered="#{not professorController.editable}" />
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                    Professor Teaching Status: 
+                                                    <h:selectOneMenu rendered="#{professorController.editable}" style="width: 195px" value="#{professor.teachingStatus}">
+                                                        <f:selectItem itemLabel="Available" itemValue="Available"/>
+                                                        <f:selectItem itemLabel="Not Available" itemValue="NotAvailable"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputText value="#{professor.teachingStatus}" rendered="#{not professorController.editable}" />
+                                                </p>
+                                            </li>
+                                        </ui:repeat>
+                                    </div>
+                                    <center>
+                                        <div>
+                                            <font color="red">
+                                                <em>
+                                                    <h:outputText id="formResultStr" value="#{professorController.updateStatus}" /><br/><br/>
+                                                </em>
+                                            </font>
+                                        </div>
+                                        <h:commandButton class="btn btn-danger" value="Save Changes" action="#{professorController.saveAction}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:commandButton class="btn btn-danger" value="Edit Professor" action="#{professorController.editAction}" rendered="#{not professorController.editable}" />
+                                        <h:commandButton class="btn btn-danger" value="Cancel Edit" action="#{professorController.stopEditAction}" rendered="#{professorController.editable}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Add Professor" onclick="showAddProfessorForm()" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Close Form" onclick="hideProfessorDiv()" />
+                                    </center>
+                                    <div id="addProfessorFormDiv" style="display: none">        
+                                        <h:form id="addProfessorForm">
+                                            Professor Name: <h:inputText id="professorNameID" value="#{professorController.theProfessorModel.professorName}" jp:autofocus="true"/><br/>
+                                            
+                                            Professor ULID: <h:inputText id="professorULIDID" value="#{professorController.theProfessorModel.ulid}"/><br/><br/>
+                                            
+                                            
+                                            Employment Status: &nbsp;&nbsp;
+                                            <h:selectOneMenu style="width: 195px" value="#{professorController.theProfessorModel.employmentStatus}">
+                                                <f:selectItem itemLabel="Active" itemValue="Active"/>
+                                                <f:selectItem itemLabel="InActive" itemValue="InActive"/>
+                                            </h:selectOneMenu><br/><br/>
+
+                                            Teaching Status: &nbsp;&nbsp;&nbsp;&nbsp;                                
+                                            <h:selectOneMenu style="width: 195px" value="#{professorController.theProfessorModel.teachingStatus}">
+                                                <f:selectItem itemLabel="Available" itemValue="Available"/>
+                                                <f:selectItem itemLabel="Not Available" itemValue="NotAvailable"/>
+                                            </h:selectOneMenu><br/><br/>
+                                            <h:commandButton class="btn btn-danger" value="Add Professor" action="#{professorController.addNewProfessor()}" rendered="#{not professorController.editable}" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="button" class="btn btn-danger" value="Cancel" onclick="hideAddProfessorDiv()" />
+                                        </h:form>
+                                    </div>
+
+                                </h:form>
+                            </div>
+
+                            
+                            
+                            <!--merge code for courses here-->
+                            <div id="courseDiv" style="display: none">
+                                <br/><center><h3><strong>Add/Update Course</strong></h3></center><br/>
+                                <h:form>
+                                    <div class="list-group" style="text-align: left">
+                                        <ui:repeat value="#{courseController.getCourseList(allScheduleController.theAllScheduleModel)}" var="course">
+                                            <li class="list-group-item">
+
+                                                <h4 class="list-group-item-heading">
+                                                    <h:outputText value="#{course.course_code}"/>
+                                                    &nbsp;&nbsp;
+                                                    <h:outputText value="#{course.course_name}"/>
+                                                    <p class="list-group-item-text">
+                                                        Number of Sections: 
+                                                        <h:outputText value="#{course.numberOfSections}" rendered="#{not courseController.editable}"/>
+                                                        <h:inputText value="#{course.numberOfSections}" rendered="#{courseController.editable}"/>
+                                                    </p>
+                                                    
+                                                </h4>
+
+                                                
+                                            </li>
+                                        </ui:repeat>
+                                    </div>
+                                    <center>
+                                        <div>
+                                            <font color="red">
+                                                <em>
+                                                    <h:outputText id="formResultStr" value="#{courseController.updateStatus}" /><br/><br/>
+                                                </em>
+                                            </font>
+                                        </div>
+                                        <h:commandButton class="btn btn-danger" value="Save Changes" action="#{courseController.saveAction(allScheduleController.theAllScheduleModel)}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:commandButton class="btn btn-danger" value="Edit Course" action="#{courseController.editAction}" rendered="#{not courseController.editable}" />
+                                        <h:commandButton class="btn btn-danger" value="Cancel Edit" action="#{courseController.stopEditAction}" rendered="#{courseController.editable}" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Add Course" onclick="showAddCourseForm()" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="button" class="btn btn-danger" value="Close Form" onclick="hideCourseDiv()" />
+                                    </center>
+                                    <div id="addCourseFormDiv" style="display: none">        
+                                        <h:form id="addProfessorForm">
+                                            Course Code:  <h:inputText id="courseCodeID" value="#{courseController.theCourseModel.course_code}" jp:autofocus="true"/><br/>
+                                            
+                                            Course Name: <h:inputText id="courseNameID" value="#{courseController.theCourseModel.course_name}"/><br/><br/>
+                                            
+                                            
+                                            <br/><br/>
+                                            <h:commandButton class="btn btn-danger" value="Add Course" action="#{courseController.addNewCourse()}" rendered="#{not courseController.editable}" />
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="button" class="btn btn-danger" value="Cancel" onclick="hideAddCourseDiv()" />
+                                        </h:form>
+                                    </div>
+
+                                </h:form>
+                            </div>
+                            
+                        </div>
+                        <div class="tab-pane" style="height: 600px;" id="tab3">2222Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+                        <div class="tab-pane" style="height: 600px;" id="tab4">3333Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+                        <div class="tab-pane" style="height: 600px;" id="tab5">4444Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</div>
+                    </div>
+                </div>
+                <!-- /navbar -->
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </h:body>
+</html>
